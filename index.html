@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Foragon Group</title>
     <style>
         :root {
@@ -14,19 +14,22 @@
             --accent: #007AFF;
         }
 
-        body { 
+        html, body { 
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
-            background-color: var(--bg-light); 
+            background-color: var(--bg-soft); 
             color: var(--text-main); 
-            margin: 0; 
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Menu Pill-shape Highlight */
+        /* Nav điều hướng */
         nav { 
             display: flex;
             justify-content: center;
-            padding: 15px 0;
+            padding: 15px 10px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             position: sticky; top: 0; z-index: 1000;
@@ -38,7 +41,11 @@
             background: rgba(0, 0, 0, 0.05);
             padding: 4px;
             border-radius: 22px;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
+        .nav-container::-webkit-scrollbar { display: none; }
 
         nav a { 
             padding: 8px 16px;
@@ -51,132 +58,118 @@
             white-space: nowrap;
         }
 
-        nav a:hover { color: var(--text-main); }
-        
         nav a.active {
             background: var(--card-bg);
             color: var(--text-main);
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        /* Hero Section */
+        /* Header Section - Đã đồng bộ style với Privacy/Support */
         .hero {
-            padding: 110px 20px 70px;
+            padding: 80px 20px 40px;
             text-align: center;
-            background: var(--bg-light);
+            background: var(--bg-light); /* Nền trắng thuần giống các trang con */
         }
         .hero h1 { 
             font-size: clamp(2.5rem, 8vw, 4.5rem); 
             font-weight: 800; 
             letter-spacing: -2px; 
             margin: 0;
-            color: var(--text-main);
-            text-transform: uppercase;
+            line-height: 1.1;
         }
         .hero p { 
-            font-size: 1.2rem; color: var(--text-sub); max-width: 550px; margin: 18px auto 0;
-            line-height: 1.5; font-weight: 400;
+            font-size: 1.2rem; 
+            color: var(--text-sub); 
+            margin: 15px auto 0;
+            max-width: 600px;
         }
 
-        /* Section Products */
-        .products-section {
+        /* Content Section - Bo góc đè lên Header giống Privacy */
+        .content-section {
             background-color: var(--bg-soft);
-            padding: 90px 0;
-            border-radius: 45px 45px 0 0;
+            padding: 60px 0 20px;
+            border-radius: 45px 45px 0 0; /* Bo góc tròn đặc trưng */
+            margin-top: 0;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-        .section-label {
-            display: block;
-            text-align: center;
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 45px;
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            box-sizing: border-box;
         }
 
-        .apps-grid {
+        .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 20px;
         }
 
         .app-card {
             background: var(--card-bg);
             border-radius: 38px;
-            padding: 45px 30px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            padding: 45px 35px;
             text-decoration: none;
             color: inherit;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid rgba(0,0,0,0.02);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .app-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.07);
         }
 
         .app-icon {
-            width: 110px;
-            height: 110px;
-            border-radius: 22.5%;
-            margin-bottom: 25px;
-            object-fit: cover;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .app-card h3 { font-size: 1.5rem; margin: 0 0 12px; font-weight: 700; letter-spacing: -0.5px; }
-        .app-card p { color: var(--text-sub); font-size: 0.98rem; margin: 0 0 30px; line-height: 1.55; flex-grow: 1; }
-
-        .btn-view {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-main);
-            padding: 10px 24px;
-            background: var(--bg-soft);
+            width: 90px;
+            height: 90px;
             border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-        .app-card:hover .btn-view {
-            background: var(--text-main);
-            color: #fff;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
+        .app-card h3 { font-size: 1.4rem; margin: 0 0 12px; font-weight: 700; }
+        .app-card p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; flex-grow: 1; }
+
+        /* Button Upgraded */
+        .btn-view {
+            background: var(--text-main);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .app-card:hover .btn-view {
+            background: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Footer đồng bộ */
         footer { 
             background: var(--bg-soft);
-            padding: 60px 0;
+            text-align: center; 
+            padding: 60px 0 80px;
             color: var(--text-sub); 
             font-size: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
-
-        footer .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        footer p { 
-            margin: 5px 0; 
-            text-align: center;
-        }
+        footer .container { max-width: 850px; }
+        footer p { margin: 8px 0; }
 
         @media (max-width: 768px) {
+            .hero { padding: 60px 15px 40px; }
             .hero h1 { font-size: 2.8rem; }
-            .nav-container { overflow-x: auto; max-width: 90vw; }
+            .app-card { padding: 35px 25px; }
         }
     </style>
 </head>
@@ -193,34 +186,33 @@
 
     <header class="hero">
         <div class="container">
-            <h1>FORAGON GROUP</h1>
-            <p>Pure mobile experiences through meticulously crafted native applications.</p>
+            <h1>Foragon Group</h1>
+            <p>Creating intuitive mobile solutions designed to simplify your digital life.</p>
         </div>
     </header>
 
-    <section class="products-section">
+    <section class="content-section">
         <div class="container">
-            <span class="section-label">Featured Applications</span>
-            <div class="apps-grid">
-                <a href="https://apps.apple.com/vn/app/lgee-tv-remote-control/id6740446386" class="app-card" target="_blank">
-                    <img src="lg.jpg" alt="LG Icon" class="app-icon">
-                    <h3>LG TV Remote Control</h3>
+            <div class="app-grid">
+                <a href="https://apps.apple.com/vn/app/lge-tv-remote-control-thinq/id6739223847" class="app-card" target="_blank">
+                    <img src="lg.jpg" alt="LGEE Icon" class="app-icon">
+                    <h3>LG TV Remote</h3>
                     <p>Control your LG Smart TV seamlessly over Wi-Fi with an intuitive touch trackpad.</p>
-                    <div class="btn-view">View on App Store</div>
+                    <div class="btn-view">Get on App Store</div>
                 </a>
 
                 <a href="https://apps.apple.com/vn/app/sam-tv-remote-control/id6740446432" class="app-card" target="_blank">
                     <img src="ss.jpg" alt="SAM Icon" class="app-icon">
-                    <h3>Samsung TV Remote Control</h3>
+                    <h3>Samsung TV Remote</h3>
                     <p>Stable connection and instant response for all Samsung Smart TV models.</p>
-                    <div class="btn-view">View on App Store</div>
+                    <div class="btn-view">Get on App Store</div>
                 </a>
 
                 <a href="https://apps.apple.com/vn/app/id6767218533" class="app-card" target="_blank">
                     <img src="altp.png" alt="ALTP Icon" class="app-icon">
                     <h3>Who Wants to Be a Millionaire</h3>
-                    <p>Challenge your knowledge with a modern 3D interface and immersive experience.</p>
-                    <div class="btn-view">View on App Store</div>
+                    <p>Challenge your knowledge with a modern 3D interface and immersive game experience.</p>
+                    <div class="btn-view">Get on App Store</div>
                 </a>
             </div>
         </div>
@@ -229,7 +221,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 FORAGON GROUP. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.6;">foragon.group.feedback@gmail.com</p>
+            <p style="opacity: 0.6;">foragon.group.feedback@gmail.com</p>
         </div>
     </footer>
 

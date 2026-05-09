@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Privacy Policy - Foragon Group</title>
     <style>
         :root {
@@ -14,20 +14,23 @@
             --accent: #007AFF;
         }
 
-        body { 
+        /* Ngăn chặn hoàn toàn scroll ngang */
+        html, body { 
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0; 
+            padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
-            /* Sửa: Dùng màu nền soft cho body để không lộ line trắng khi bo góc section */
             background-color: var(--bg-soft); 
             color: var(--text-main); 
-            margin: 0; 
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Nav Pill-menu */
+        /* Nav điều hướng thông minh */
         nav { 
             display: flex;
             justify-content: center;
-            padding: 15px 0;
+            padding: 15px 10px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
             position: sticky; top: 0; z-index: 1000;
@@ -39,7 +42,11 @@
             background: rgba(0, 0, 0, 0.05);
             padding: 4px;
             border-radius: 22px;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
+        .nav-container::-webkit-scrollbar { display: none; }
 
         nav a { 
             padding: 8px 16px;
@@ -60,14 +67,14 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        /* Hero: Giữ nền trắng để tương phản với nav */
+        /* Hero Section */
         .hero {
             padding: 80px 20px 40px;
             text-align: center;
             background: var(--bg-light);
         }
         .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 3.5rem); 
+            font-size: clamp(2.2rem, 8vw, 3.5rem); 
             font-weight: 800; 
             letter-spacing: -1.5px; 
             margin: 0;
@@ -76,11 +83,16 @@
         /* Content Section */
         .content-section {
             background-color: var(--bg-soft);
-            padding: 60px 0 20px; /* Giảm padding bottom để liền mạch với footer */
+            padding: 60px 0 20px;
             border-radius: 45px 45px 0 0;
         }
 
-        .container { max-width: 850px; margin: 0 auto; padding: 0 24px; }
+        .container { 
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            box-sizing: border-box;
+        }
 
         .policy-card {
             background: var(--card-bg);
@@ -88,6 +100,7 @@
             padding: 50px;
             border: 1px solid rgba(0,0,0,0.02);
             box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+            word-wrap: break-word; /* Đảm bảo text dài không đẩy rộng card */
         }
 
         h2 { 
@@ -110,31 +123,18 @@
         
         footer { 
             background: var(--bg-soft);
-            padding: 60px 0;
+            padding: 60px 0 80px;
             color: var(--text-sub); 
             font-size: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
         }
+        footer p { margin: 8px 0; }
 
-        footer .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        footer p { 
-            margin: 5px 0; 
-            text-align: center;
-        }
-
+        /* Mobile Optimization */
         @media (max-width: 768px) {
-            .policy-card { padding: 35px 20px; }
-            .nav-container { overflow-x: auto; max-width: 90vw; }
+            .container { padding: 0 16px; }
+            .policy-card { padding: 35px 20px; border-radius: 28px; }
+            .hero { padding: 60px 15px 35px; }
         }
     </style>
 </head>
