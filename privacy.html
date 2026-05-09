@@ -1,107 +1,206 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chính sách bảo mật - Truong Tai Hoa</title>
+    <title>Privacy Policy - Foragon Group</title>
     <style>
-        /* CSS nội bộ đảm bảo trang hiển thị tốt trên mọi thiết bị và không phụ thuộc file ngoài */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            max-width: 850px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f4f4f7; 
+        :root {
+            --bg-light: #ffffff;
+            --bg-soft: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+            --accent: #007AFF;
         }
-        .container { 
-            background: #ffffff; 
-            padding: 40px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            /* Sửa: Dùng màu nền soft cho body để không lộ line trắng khi bo góc section */
+            background-color: var(--bg-soft); 
+            color: var(--text-main); 
+            margin: 0; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav Pill-menu */
+        nav { 
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
-        /* Menu điều hướng */
-        nav { 
-            margin-bottom: 25px; 
-            text-align: center; 
-            padding: 10px;
-            background: #fff;
-            border-radius: 8px;
+        .nav-container {
+            display: flex;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px;
+            border-radius: 22px;
         }
-        nav a { 
-            margin: 0 15px; 
-            text-decoration: none; 
-            color: #007AFF; 
-            font-weight: 600; 
-            font-size: 0.95em; 
-        }
-        nav a:hover { text-decoration: underline; }
 
-        h1 { color: #1d1d1f; font-size: 26pt; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; }
-        h2 { color: #007AFF; font-size: 18pt; margin-top: 35px; }
-        p, li { font-size: 11pt; color: #444; margin-bottom: 15px; }
-        ul { padding-left: 20px; }
+        nav a { 
+            padding: 8px 16px;
+            text-decoration: none; 
+            color: var(--text-sub); 
+            font-size: 0.82em; 
+            font-weight: 500; 
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        nav a:hover { color: var(--text-main); }
+        
+        nav a.active {
+            background: var(--card-bg);
+            color: var(--text-main);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Hero: Giữ nền trắng để tương phản với nav */
+        .hero {
+            padding: 80px 20px 40px;
+            text-align: center;
+            background: var(--bg-light);
+        }
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 3.5rem); 
+            font-weight: 800; 
+            letter-spacing: -1.5px; 
+            margin: 0;
+        }
+
+        /* Content Section */
+        .content-section {
+            background-color: var(--bg-soft);
+            padding: 60px 0 20px; /* Giảm padding bottom để liền mạch với footer */
+            border-radius: 45px 45px 0 0;
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 0 24px; }
+
+        .policy-card {
+            background: var(--card-bg);
+            border-radius: 35px;
+            padding: 50px;
+            border: 1px solid rgba(0,0,0,0.02);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+        }
+
+        h2 { 
+            font-size: 1.4rem; 
+            margin-top: 40px; 
+            margin-bottom: 15px; 
+            color: var(--text-main); 
+            font-weight: 700;
+            border-bottom: 1px solid var(--bg-soft);
+            padding-bottom: 10px;
+        }
+        h2:first-of-type { margin-top: 0; }
+
+        p, li { 
+            color: var(--text-sub); 
+            line-height: 1.7; 
+            font-size: 0.95rem; 
+            margin-bottom: 15px; 
+        }
         
         footer { 
-            margin-top: 50px; 
-            text-align: center; 
-            font-size: 0.9em; 
-            color: #8e8e93; 
-            border-top: 1px solid #e5e5e5; 
-            padding-top: 20px; 
+            background: var(--bg-soft);
+            padding: 60px 0;
+            color: var(--text-sub); 
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
-        
-        .last-updated { font-style: italic; color: #8e8e93; margin-bottom: 20px; }
-        a { color: #007AFF; text-decoration: none; }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        footer p { 
+            margin: 5px 0; 
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .policy-card { padding: 35px 20px; }
+            .nav-container { overflow-x: auto; max-width: 90vw; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">Trang chủ</a>
-        <a href="privacy.html">Chính sách bảo mật</a>
-        <a href="support.html">Hỗ trợ</a>
-        <a href="terms.html">Điều khoản</a>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="privacy.html" class="active">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="support.html">Support</a>
+        </div>
     </nav>
 
-    <div class="container">
-        <h1>Chính sách bảo mật (Privacy Policy)</h1>
-        <p class="last-updated">Cập nhật lần cuối: Ngày 09 tháng 05 năm 2026</p>
-        
-        <p>Chào mừng bạn đến với các ứng dụng di động của chúng tôi (gọi chung là "Ứng dụng"). Chúng tôi cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn khi bạn trải nghiệm các dịch vụ của chúng tôi.</p>
+    <header class="hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p style="color: var(--text-sub); margin-top: 15px;">Effective date: May 09, 2026</p>
+        </div>
+    </header>
 
-        <h2>1. Thu thập và Sử dụng Thông tin</h2>
-        <p>Chúng tôi <strong>không thu thập</strong> bất kỳ thông tin định danh cá nhân nào như họ tên, địa chỉ, số điện thoại hoặc địa chỉ email trực tiếp trong Ứng dụng. Bạn có thể sử dụng các tính năng của Ứng dụng mà không cần đăng ký tài khoản.</p>
+    <section class="content-section">
+        <div class="container">
+            <div class="policy-card">
+                <p>This Privacy Policy explains how Truong Huu Hoa ("our", "us" or "we") and some of the companies we work with collect, use, share and protect information in relation to our mobile services, web site, and any software provided on or in connection with my services (collectively, the "Service"), and your choices about the collection and use of your information.</p>
+                <p>By using our Service you understand and agree that we are providing a platform for you to process your content. Our Policy applies to all visitors, users, and others who access the Service ("Users").</p>
 
-        <h2>2. Dịch vụ của Bên Thứ Ba và Quảng cáo</h2>
-        <p>Để duy trì ứng dụng miễn phí, chúng tôi sử dụng dịch vụ <strong>Google AdMob</strong> để hiển thị quảng cáo. Các đối tác quảng cáo có thể thu thập dữ liệu ẩn danh thông qua thiết bị của bạn để cung cấp quảng cáo phù hợp, bao gồm:</p>
-        <ul>
-            <li>ID quảng cáo của thiết bị (IDFA trên iOS).</li>
-            <li>Thông tin về kiểu máy và phiên bản hệ điều hành.</li>
-            <li>Dữ liệu tương tác với các quảng cáo trong ứng dụng.</li>
-        </ul>
-        <p>Bạn có thể tìm hiểu thêm về cách Google xử lý dữ liệu tại: <a href="https://policies.google.com/privacy" target="_blank">Chính sách Bảo mật của Google</a>.</p>
+                <h2>1. Collection of Information</h2>
+                <p>The data we collect depends on the context of your interactions with us, the choices you make, including your privacy settings, and the products and features you use. The data we collect can include SDK/API/JS code version, browser, Internet service provider, IP address, platform, timestamp, application identifier, application version, application distribution channel, independent deice identifier, iOS ad identifier (IDFA), Android ad master identifier, network card (MAC) address, and international mobile device identification code (IMEI) The equipment model, the terminal manufacturer, the terminal device operating system version, the session start / stop time, the location of the language, the time zone and the network state (WiFi and so on), the hard disk, the CPU, and the battery use, etc.</p>
+                <p>The app does use third party services that may collect information used to identify you.</p>
+                
+                <p><strong>Cookies</strong></p>
+                <p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.</p>
+                <p>This Service does not use these "cookies" explicitly. However, the app may use third party code and libraries that use "cookies" to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.</p>
 
-        <h2>3. Quyền Hạn chế Theo dõi (ATT)</h2>
-        <p>Ứng dụng tuân thủ nghiêm ngặt quy định <strong>App Tracking Transparency</strong> của Apple. Chúng tôi sẽ yêu cầu sự cho phép của bạn trước khi truy cập vào ID quảng cáo. Nếu bạn từ chối, ứng dụng vẫn hoạt động bình thường và chúng tôi sẽ không theo dõi hoạt động của bạn cho mục đích quảng cáo cá nhân hóa.</p>
+                <h2>2. Use of Personal Data</h2>
+                <p>Product Improvement. We use data to continually improve our products, including adding new features or capabilities, and perform marketing analysis.</p>
 
-        <h2>4. Bảo mật cho Trẻ em</h2>
-        <p>Ứng dụng của chúng tôi được thiết kế an toàn cho mọi lứa tuổi. Chúng tôi không cố ý thu thập thông tin từ trẻ em dưới 13 tuổi. Nếu bạn tin rằng chúng tôi đã thu thập thông tin như vậy, vui lòng liên hệ để chúng tôi thực hiện xóa bỏ dữ liệu.</p>
+                <h2>3. Sharing of Personal Data</h2>
+                <p>To improve our product and provide you better service, we also share personal data with vendors or agents working on our behalf for the purposes described in this privacy policy. For example, companies we've hired to provide data analytical services may need collect and access to personal data to provide those functions. In such cases, these companies must abide by our data privacy and security requirements.</p>
 
-        <h2>5. Liên kết đến các trang khác</h2>
-        <p>Trong Ứng dụng hoặc trên trang web này có thể chứa liên kết đến các trang web khác. Chúng tôi không chịu trách nhiệm về nội dung hoặc chính sách bảo mật của các trang web bên thứ ba đó.</p>
+                <h2>4. Legal Basis for Data Processing</h2>
+                <p>We process Personal Data for the purposes set out in this Privacy Policy, as described above. Our legal basis to process personal data includes processing that is: necessary for the performance of the contract with you (for example, to provide you with the services you request and to identify and authenticate you so you may use the Sites); necessary to comply with legal requirements (for example, to comply with applicable accounting rules and to make mandatory disclosures to law enforcement); necessary for our legitimate interests (for example, to manage our relationship with you, to ensure the security of our services, to communicate with you about our products and services); and based on consent by our customers (for example, to place certain cookies and to share your information with third parties for advertising purposes).</p>
+                <p>In some instances, you may be required to provide us with Personal Data for processing as described above, in order for us to be able to provide you all of our services, and for you to use all the features of our Sites.</p>
 
-        <h2>6. Thay đổi Chính sách</h2>
-        <p>Chúng tôi có thể cập nhật Chính sách bảo mật này để phù hợp với các quy định mới. Mọi thay đổi sẽ được công bố ngay tại trang web này.</p>
+                <h2>5. International Transfers of Personal Data</h2>
+                <p>Our business may require us to transfer your Personal Data to countries outside of the European Economic Area ("EEA"), including to countries such as the People's Republic of China or Singapore. We take appropriate steps to ensure that recipients of your Personal Data are bound to duties of confidentiality and we implement measures such as standard contractual clauses. A copy of those clauses can be obtained by contacting our Help Center.</p>
 
-        <h2>7. Liên hệ</h2>
-        <p>Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi qua thông tin hỗ trợ chính thức trên cửa hàng ứng dụng App Store.</p>
-    </div>
+                <h2>6. Your Rights</h2>
+                <p>Subject to limitations in applicable law, you are entitled to object to or request the restriction of processing of your Personal Data, and to request access to, rectification, erasure and portability of your own Personal Data.</p>
+                <p>Where the use of your information is based on consent, you can withdraw this consent at any time without affecting the lawfulness of processing based on consent before its withdrawal.</p>
+                <p>Requests should be submitted by contacting us through Email.</p>
+                <p>If you are aware of changes or inaccuracies in your information, you should inform us of such changes so that our records may be updated or corrected. You may lodge a complaint with a supervisory authority if you consider that our processing of your Personal Data infringes applicable law.</p>
+                <p>We retain your Personal Data as long as needed to provide services or products to you, or as required or permitted by applicable laws, such as tax and accounting laws.</p>
+
+                <h2>7. How to Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us: <a href="mailto:foragon.group.feedback@gmail.com" style="color: var(--accent); text-decoration: none;">foragon.group.feedback@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        &copy; 2026 Truong Tai Hoa. Bảo lưu mọi quyền.
+        <div class="container">
+            <p>&copy; 2026 FORAGON GROUP. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.6;">foragon.group.feedback@gmail.com</p>
+        </div>
     </footer>
 
 </body>
